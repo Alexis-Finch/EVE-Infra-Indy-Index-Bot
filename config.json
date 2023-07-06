@@ -1,5 +1,5 @@
 {
-  "alliance_IDs": [99003214,99010931],
+  "alliance_IDs": [99003214],
   "webhooks":
   {
     "slack": true,
