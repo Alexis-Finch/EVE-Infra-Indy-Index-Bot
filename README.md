@@ -34,8 +34,4 @@ Requests
 
 ## Future Ideas ##
 
-Multi-alliance tracking
-
 Discord functionality
-
-Config file for easy modification
