@@ -48,10 +48,17 @@ def GetIndices(alliance_IDs):
                 output_string += (getNameBySystemID(system["solar_system_id"]) + ": " + str(indexFormatter(system['cost_index'])) + "\n")
         output_string += "```\n\n"
 
+    if configuration['webhooks']['slack']:
+        print("Sending to slack!")
+        slack_url = os.environ["INDY_BOT_SLACK_WEBHOOK_URL"]
 
-    slack_url = os.environ["INDY_BOT_SLACK_WEBHOOK_URL"]
+        requests.post(slack_url, data=json.dumps({'text': output_string}), headers={'Content-Type': 'application/json'})
 
-    requests.post(slack_url, data=json.dumps({'text': output_string}), headers={'Content-Type': 'application/json'})
+    if configuration['webhooks']['discord']:
+        print("Sending to discord!")
+        discord_url = os.environ['INDY_BOT_DISCORD_WEBHOOK_URL']
+
+        requests.post(discord_url, data=json.dumps({'content': output_string}), headers={'Content-Type': 'application/json'})
 
 #opens config file
 configFile = open("./config.json")
