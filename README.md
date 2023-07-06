@@ -17,6 +17,8 @@ INDY_BOT_ALLIANCE_ID - Set to an integer value for the Alliance ID of the target
 
 INDY_BOT_SLACK_WEBHOOK_URL - Set to the slack webhook URL
 
+INDY_BOT_DISCORD_WEBHOOK_URL - Set to the discord webhook URL
+
 
 ### Config File -
 
@@ -24,9 +26,9 @@ The default config file will track systems owned by BRAVE COLLECTIVE.
 
 To add or modify the list of alliances, insert their alliances IDs into the config file.
 
-The webhook values currently stored will allow the administrator to determine where the system will attempt to send the outputs.
+Slack and Discord integration are both supported.
 
-Currently these settings are not utilized.
+The slack + discord boolean values in config.json will control which service(s) the system will attempt to send the output to.
 
 ### PIP Libraries Required:
 
