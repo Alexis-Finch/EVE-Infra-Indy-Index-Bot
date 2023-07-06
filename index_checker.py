@@ -18,11 +18,7 @@ def indexFormatter (index):
     return f"{index:.2%}"
 
 def parseIndicesBySystemList (index_response, alliance_systems):
-
-    # Stores the data that will be sent at the end
-    alliance_indexes_lists = [{'name':'Manufacturing','data':[]}, {'name':'TE Research', 'data':[]}, {'name':'ME Research','data':[]}, {'name':'Copying','data':[]},{'name':'Invention','data':[]},{'name':'Reactions', 'data':[]}]
-
-
+    system_indices_list = []
 
     #Reads through all indexes returned by ESI
     for cost_index in index_response:
@@ -30,38 +26,33 @@ def parseIndicesBySystemList (index_response, alliance_systems):
         for system in alliance_systems:
             # If the systems match (cost index pertains to a system on the alliance_systems list
             if cost_index['solar_system_id'] == system['id']:
-                # then it adds the indices to the output data, formatted with system ID and cost index
+                sum = 0
+                for index in cost_index['cost_indices']:
+                   sum += index['cost_index']
+                if sum > (configuration['display_threshold'] * 6):
+                    system_indices_list.append([system['name'],cost_index['cost_indices'][0]['cost_index'],cost_index['cost_indices'][5]['cost_index']])
 
-                for list in enumerate(alliance_indexes_lists):
-                    if configuration['indices'][list[1]['name']]:
-                        alliance_indexes_lists[list[0]]['data'].append({'system_name':system['name'], 'cost_index':cost_index['cost_indices'][list[0]]['cost_index']})
-                        alliance_indexes_lists[list[0]]['data'] = sorted(alliance_indexes_lists[list[0]]['data'], key=operator.itemgetter('cost_index'))
-                        alliance_indexes_lists[list[0]]['data'].reverse()
+    # sorts the data
+    system_indices_list.sort(key=lambda x: x[1])
 
-    return(alliance_indexes_lists)
+    system_indices_list.reverse()
 
-def buildOutputString (index_data):
+    for list_item in system_indices_list:
+        list_item[1] = indexFormatter(list_item[1])
+        list_item[2] = indexFormatter(list_item[2])
 
-    output_string = ""
+    system_indices_list.insert(0,['System','Manuf','React'])
 
-    #runs through the finalized data, each one is a different index type
-    for list in index_data:
-        if len(list['data']) > 0:
-            #add the header to the output
-            output_string += (list['name'] + " Cost Index Report: ```")
-            # add each systems data
-            for system in list['data']:
-                if system['cost_index'] > configuration['display_threshold']:
-                 output_string += (system["system_name"] + ": " + str(indexFormatter(system['cost_index'])) + "\n")
-            # Add the end syntax for the list of systems
-            output_string += "```\n\n"
-    return output_string
+    return system_indices_list
 
-def parseIndicesBySystemListV2 (index_response, alliance_systems):
-    return 1
+def buildOutputString (system_indices_list):
+    outputString = "System Industry Indices Report \n ```"
 
-def buildOutputStringV2 (index_data):
-    return 1
+    for col in system_indices_list:
+        outputString += ('{0:7} {1:>8} {2:>8}'.format(*col)) + "\n"
+
+    outputString += "```"
+    return outputString
 
 
 def postSlackWebhook (content):
@@ -91,19 +82,14 @@ def GetIndices(alliance_IDs):
             alliance_systems.append(system['solar_system_id'])
 
     resolve_system_name_url = 'https://esi.evetech.net/latest/universe/names/'
-    resolve_system_name_headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-cache'
-    }
-
-    alliance_systems = requests.post(resolve_system_name_url, headers=resolve_system_name_headers, json=alliance_systems).json()
+    alliance_systems = requests.post(resolve_system_name_url, headers={'Accept': 'application/json','Content-Type': 'application/json','Cache-Control': 'no-cache'}, json=alliance_systems).json()
 
     index_response = requests.get(indices_url).json()
 
-    alliance_indexes_lists = parseIndicesBySystemList(index_response, alliance_systems)
 
-    output_string = buildOutputString(alliance_indexes_lists)
+    system_indices_list = parseIndicesBySystemList(index_response, alliance_systems)
+
+    output_string = buildOutputString(system_indices_list)
 
     #if the config file is true for slack
     if configuration['webhooks']['slack']:
