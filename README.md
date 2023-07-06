@@ -9,15 +9,23 @@ Then it will POST the finalized report to the SLACK WEBHOOK.
 
 ## CONFIG ##
 
+### Runs on PYTHON 3.9
+
 To configure this script properly, two SYSTEM ENVIORNMENT VARIABLES are required
 
 INDY_BOT_ALLIANCE_ID - Set to an integer value for the Alliance ID of the target Alliance
+
 INDY_BOT_WEBHOOK_URL - Set to the slack webhook URL
 
 
+### PIP Libraries Required:
 
-Future Ideas -
+Requests
+
+## Future Ideas ##
 
 Multi-alliance tracking
+
 Discord functionality
+
 Config file for easy modification
