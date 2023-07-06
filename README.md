@@ -1,11 +1,14 @@
 # EVE Infra Indy Index Bot
-An EVE Online reporting tool for Industry and Reaction Cost indexes
 
-This tool is designed to interface with slack webhooks for reporting.
+The purpose of this program is to present a list of cost indexes for Manufacturing and Reactions for an alliance (or alliances) in EVE Online
 
-When ran, index_checker will make repeated ESI pulls to establish indexes, and prepare the report.
+The data can then be sent to Discord or Slack
 
-Then it will POST the finalized report to the SLACK WEBHOOK.
+Set it up on a CRON job or task scheduler to cycle regularly, and it'll keep you up to date on the cost indexes in your systems! 
+
+When ran, index_checker will make ESI pulls to establish indexes, and prepare the report.
+
+Then it will POST the finalized report to the SLACK or DISCORD WEBHOOK.
 
 ## CONFIG ##
 
