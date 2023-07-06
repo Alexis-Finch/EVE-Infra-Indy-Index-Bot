@@ -34,6 +34,3 @@ The slack + discord boolean values in config.json will control which service(s) 
 
 Requests
 
-## Future Ideas ##
-
-Discord functionality
