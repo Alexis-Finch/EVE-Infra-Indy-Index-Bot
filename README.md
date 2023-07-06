@@ -33,16 +33,6 @@ Slack and Discord integration are both supported.
 
 The slack + discord boolean values in config.json will control which service(s) the system will attempt to send the output to.
 
-The default config file will track all INDEX TYPES
-
-Manufacturing
-TE Research
-ME Research
-Copying
-Invention
-Reactions
-
-You can disable tracking for any type in the config file
 
 ### PIP Libraries Required:
 
