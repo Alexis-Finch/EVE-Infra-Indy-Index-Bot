@@ -1,11 +1,18 @@
 {
-  "alliance_IDs": [
-    99003214
+  "alliance_IDs":
+    [
+    99003214,
+      99005839
+  ],
+  "regions":
+    [
+    10000046,
+      10000023
   ],
   "webhooks":
   {
     "slack": true,
     "discord": true
   },
-  "display_threshold": 0.001
+  "display_threshold": 0.02
 }
