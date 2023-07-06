@@ -1,9 +1,19 @@
 {
-  "alliance_IDs": [99003214],
+  "alliance_IDs": [
+    99003214
+  ],
   "webhooks":
   {
-    "slack": true,
-    "discord":false
+    "slack": false,
+    "discord": true
+  },
+  "indices":
+  {
+    "Manufacturing": true,
+    "TE Research": true,
+    "ME Research": true,
+    "Copying": true,
+    "Invention": true,
+    "Reactions": true
   }
-
 }
