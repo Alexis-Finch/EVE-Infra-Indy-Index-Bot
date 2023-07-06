@@ -9,7 +9,7 @@ Then it will POST the finalized report to the SLACK WEBHOOK.
 
 ## CONFIG ##
 
-### Runs on PYTHON 3.9
+### Runs on PYTHON 3.10
 
 To configure this script properly, two SYSTEM ENVIORNMENT VARIABLES are required
 
