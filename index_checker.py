@@ -42,7 +42,7 @@ def GetIndices(alliance_id):
 
     output_string = ""
     for list in index_list:
-        output_string += (list['name'] + " Cost Index Report: \n \n ```")
+        output_string += (list['name'] + " Cost Index Report: ```")
         for system in list['data']:
             if system['cost_index'] > 0.001:
                 output_string += (getNameBySystemID(system["solar_system_id"]) + ": " + str(indexFormatter(system['cost_index'])) + "\n")
