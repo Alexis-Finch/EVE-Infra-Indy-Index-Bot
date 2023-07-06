@@ -1,4 +1,4 @@
-# EVE-Infra-Indy-Index-Bot
+# EVE Infra Indy Index Bot
 An EVE Online reporting tool for Industry and Reaction Cost indexes
 
 This tool is designed to interface with slack webhooks for reporting.
