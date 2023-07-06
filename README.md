@@ -1,6 +1,6 @@
 # EVE Infra Indy Index Bot
 
-The purpose of this program is to present a list of cost indexes for Manufacturing and Reactions for an alliance (or alliances) in EVE Online
+The purpose of this program is to present a list of cost indexes for Industry for an alliance (or alliances) in EVE Online
 
 The data can then be sent to Discord or Slack
 
@@ -32,6 +32,17 @@ To add or modify the list of alliances, insert their alliances IDs into the conf
 Slack and Discord integration are both supported.
 
 The slack + discord boolean values in config.json will control which service(s) the system will attempt to send the output to.
+
+The default config file will track all INDEX TYPES
+
+Manufacturing
+TE Research
+ME Research
+Copying
+Invention
+Reactions
+
+You can disable tracking for any type in the config file
 
 ### PIP Libraries Required:
 
