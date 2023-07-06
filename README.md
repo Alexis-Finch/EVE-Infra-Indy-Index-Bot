@@ -11,7 +11,7 @@ Then it will POST the finalized report to the SLACK WEBHOOK.
 
 ### Runs on PYTHON 3.10
 
-To configure this script properly, two SYSTEM ENVIORNMENT VARIABLES are required
+To configure this script properly, SYSTEM ENVIORNMENT VARIABLES are required
 
 INDY_BOT_ALLIANCE_ID - Set to an integer value for the Alliance ID of the target Alliance
 
