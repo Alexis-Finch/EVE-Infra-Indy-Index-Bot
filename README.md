@@ -27,7 +27,9 @@ INDY_BOT_DISCORD_WEBHOOK_URL - Set to the discord webhook URL
 
 The default config file will track systems owned by BRAVE COLLECTIVE.
 
-To add or modify the list of alliances, insert their alliances IDs into the config file.
+To add to or modify the list of alliances, insert their ALLIANCE IDs into the config file.
+
+The report will only send systems within a provided list of REGIONS.
 
 Slack and Discord integration are both supported.
 
