@@ -4,16 +4,8 @@
   ],
   "webhooks":
   {
-    "slack": false,
+    "slack": true,
     "discord": true
   },
-  "indices":
-  {
-    "Manufacturing": true,
-    "TE Research": true,
-    "ME Research": true,
-    "Copying": true,
-    "Invention": true,
-    "Reactions": true
-  }
+  "display_threshold": 0.001
 }
