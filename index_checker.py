@@ -6,7 +6,10 @@ import json
 # Author: Alexis Finch
 # Date: July 7, 2023
 #
-# The purpose of this program is to present a
+# The purpose of this program is to present a list of cost indexes for Manufacturing and Reactions for an alliance (or alliances) in EVE Online
+# The data can then be sent to Discord or Slack
+#
+# Set it up on a CRON job or task scheduler to cycle regularly, and it'll keep you up to date on the cost indexes in your systems! 
 
 
 # Formats indexes for sake of readability. Converts decimals into percentages.
